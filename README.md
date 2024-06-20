@@ -1,2 +1,2 @@
 # LeakPy
-Python script to use Leakcheck.io API
+This script uses leakcheck.io API to search for leaked credentials
