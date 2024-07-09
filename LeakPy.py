@@ -23,12 +23,10 @@ def search_cred(email):
         return None
 
 def show_passwords(api_response):
-    results = []
- 
     if api_response.get('found', 0) > 0 and api_response.get('result'): 
         for entry in api_response['result']:
-            if 'password' in entry:
-                results.append(entry['password'])
+            if 'password' in entry: 
+                print(f'[+] {entry["email"]}:{entry["password"]}')
 
     return results
 
@@ -43,10 +41,7 @@ def main():
     with open(sys.argv[1]) as emails_file:
         for email in emails_file:
             api_response = search_cred(email.strip())
-            if api_response:
-                passwords = show_passwords(api_response)
-                for password in passwords:
-                    print(password)
+            show_passwords(api_response)
 
 if __name__ == '__main__':
     main()
